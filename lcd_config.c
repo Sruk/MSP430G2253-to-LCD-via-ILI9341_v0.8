@@ -46,11 +46,11 @@
 
 void init_ILI9340C(void)
 {
-	 	 	write_cmd_lcd(0x11);    	//Enter Sleep
+	 	write_cmd_lcd(0x11);    	//Enter Sleep
 
-	 	 	timer_wait(WAIT_100);
+	 	timer_wait(WAIT_100);
 
-			write_cmd_lcd(0xCB);		// Power Control A
+		write_cmd_lcd(0xCB);		// Power Control A
 	        write_data_lcd(0x39);
 	        write_data_lcd(0x2C);
 	        write_data_lcd(0x00);
@@ -115,7 +115,7 @@ void init_ILI9340C(void)
 	        write_cmd_lcd(0x11);    	// Exit Sleep
 	        timer_wait(WAIT_100);
 
-	        write_cmd_lcd(DSPLY_ON);    // Display on
+	        write_cmd_lcd(DSPLY_ON);    	// Display on
 	        write_cmd_lcd(0x13);		// Normal mode
 
 }
@@ -132,7 +132,7 @@ void color_invert(void){
 void set_gamma(void){
 
     write_cmd_lcd(0x26);    			//Gamma curve selected
-    write_data_lcd(0x01);				// ostale opcije: 0x02, 0x04, 0x08
+    write_data_lcd(0x01);			
 
     write_cmd_lcd(0xF2);    			// 3Gamma Function Disable
     write_data_lcd(0x02);   			// disable: 0x02, enable: 0x03
