@@ -18,9 +18,9 @@
 
 void timer_init(){
 
-	TA0CTL = TASSEL_1 + MC_1 + ID_0; 	// ACLK, count to CCR0, CLK/1
+	TA0CTL = TASSEL_1 + MC_1 + ID_0; 	// ACLK, count to CCR0, CLK/1 (no ACLK division)
 
-	TA0R = 0;							// reset TA0 register
+	TA0R = 0;				// reset TA0 register
 
 }
 
@@ -28,11 +28,11 @@ void timer_init(){
 
 void timer_wait(unsigned int t){
 
-	TA0R = 0;						// reset TA0 register
+	TA0R = 0;				// reset TA0 register
 
-	TA0CCR0 = t; 					// START, wait until CCR0 = t;
+	TA0CCR0 = t; 				// START, wait until CCR0 = t;
 
-	while( TA0R < t ){}				// time lapses, waits for counter to finish
+	while( TA0R < t ){}			// time lapses, waits for counter to finish
 
 
 }
