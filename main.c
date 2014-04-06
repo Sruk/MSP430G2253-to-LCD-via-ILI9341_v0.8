@@ -6,24 +6,24 @@
  *  Any source code resemblance to the any property of the third party's is purely coincidental.
  *
  *                       			  MSP430G2553
- *                     			   -----------------
+ *                     			       -----------------
  *                			   /|\|              XIN|-
  *                 			    | |                 |
  *                 			    --|RST          XOUT|-
- *                   			  |                 |
- *                   			  |             P1.6|-> LED(GREEN)
- *              			   	  |                 |
+ *                   			      |                 |
+ *                   			      |             P1.6|-> LED(GREEN)
+ *              		              |                 |
  *        			   LED(RED) <-|P1.0             |
- *					  			  |                 |
- *			 Data In (UCA0SOMI) ->|P1.1				|
- *					  			  |					|
- *			Data Out (UCA0SIMO)	<-|P1.2				|
- *					  			  |					|
- *	Serial Clock Out (UCA0CLK) <- |P1.4			P2.4|-> Command/Data
- *					  			  |					|
- *				   Cable Select <-|P1.5         P2.3|-> Slave Reset
- *				   				  |					|
- *				   				   -----------------
+ *					      |                 |
+ *			 Data In (UCA0SOMI) ->|P1.1		|
+ *					      |			|
+ *		     Data Out (UCA0SIMO)    <-|P1.2		|
+ *		   			      |			|
+ *	         Serial Clock Out (UCA0CLK) <-|P1.4	    P2.4|-> Command/Data
+ *		  			      |			|
+ *			       Cable Select <-|P1.5         P2.3|-> Slave Reset
+ *			 		      |			|
+ *				   	       -----------------
  *
  *  SHORT DESCRIPTION:
  *  This source code (program) runs color LCD over the SPI protocol.
@@ -36,7 +36,7 @@
  */
 
 #include <msp430.h>		/*Texas Instruments Inc. CCS5 library*/
-#include "LCD_incl.h" 	/*includes all project header's*/
+#include "LCD_incl.h" 		/*includes all project header's*/
 
 //Basic COMMANDS
 #define DSPLY_OFF 	0x28
@@ -84,20 +84,20 @@ int main(void)
 {
 	WDTCTL = WDTPW + WDTHOLD;		// Stop watchdog
 
-	sys_init();						// See 'sys_init.c'
+	sys_init();				// See 'sys_init.c'
 
-	timer_init();					// See 'timer_init.c'
+	timer_init();				// See 'timer_init.c'
 
-	reset_lcd();					// See 'lcd_driver.c'
+	reset_lcd();				// See 'lcd_driver.c'
 
 	timer_wait(WAIT_100);			// See 'timer_init.c'
 
-	init_ILI9340C();				// See 'lcd_config.c'
+	init_ILI9340C();			// See 'lcd_config.c'
 
-	RGB_test_lcd();					// See 'lcd_driver.c'
+	RGB_test_lcd();				// See 'lcd_driver.c'
 
-	P1OUT &= ~BIT6;					// Turn off green LED
-	P1OUT |= BIT0;					// Turn on green LED
-	_BIS_SR(CPUOFF);				// MSP430 shutdown
+	P1OUT &= ~BIT6;				// Turn off green LED
+	P1OUT |= BIT0;				// Turn on green LED
+	_BIS_SR(CPUOFF);			// MSP430 shutdown
 
 }
